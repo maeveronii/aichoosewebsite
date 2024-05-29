@@ -11,8 +11,9 @@
             window.onload = randomPics;
 
             //creates two arrays with ai imgs and real imgs, its a bit annoying but it works so whatever
-            var aiPics = new Array("static/aiimg/1.jpg", "static/aiimg/2.webp", "static/aiimg/3.webp", "static/aiimg/4.jpg", "static/aiimg/5.jpg","static/aiimg/6.jpg","static/aiimg/7.webp",);
-            var realPics = new Array("static/realimg/1.webp","static/realimg/3.jpg","static/realimg/4.jpg","static/realimg/5.jpg","static/realimg/6.jpg","static/realimg/7.webp",);
+            //sometimes images just... dont work? (havent included them in the array) like its not just one format, sometimes the images just FULLY dont work at all, maybe theyre actually .jpeg and not .jpg and i fucked it up but watever :P
+            var aiPics = new Array("static/aiimg/1.jpg", "static/aiimg/2.webp", "static/aiimg/3.webp", "static/aiimg/4.jpg", "static/aiimg/5.jpg","static/aiimg/6.jpg","static/aiimg/7.webp","static/aiimg/9.jpg","static/aiimg/10.jpg","static/aiimg/11.webp","static/aiimg/12.webp","static/aiimg/13.webp","static/aiimg/14.jpg");
+            var realPics = new Array("static/realimg/1.webp","static/realimg/3.jpg","static/realimg/4.jpg","static/realimg/5.jpg","static/realimg/6.jpg","static/realimg/7.webp","static/realimg/9.webp","static/realimg/10.webp","static/realimg/11.jpg");
 
             //func that chooses a random from ai, and a random from real. 
             //ill probably try and make it so that the two imgs randomly swap places, so its not always just left = ai right = real
