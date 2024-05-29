@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <style>
+            .imageContainer {
+                display: flex;
+            }
+
+        </style>
+        <script>
+            window.onload = aiRandomPic;
+            window.onload = realRandomPic;
+
+            var aiPix = new Array("static/aiimg/1.jpg", "static/aiimg/2.webp", "static/aiimg/3.webp", "static/aiimg/4.jpg", "static/aiimg/5.jpg","static/aiimg/6.jpg","static/aiimg/7.webp","static/aiimg/8.jpg");
+            var realPix = new Array("static/realimg/1.webp","static/realimg/2/jpg","static/realimg/3.jpg","static/realimg/4.jpg","static/realimg/5.jpg","static/realimg/6.jpg","static/realimg/7.webp","static/realimg/8.jpg")
+
+            function aiRandomPic() {
+                var randomNum = Math.floor(Math.random() * aiPix.length);
+                document.getElementById("aiButton").src = aiPix[randomNum];
+            }
+
+            function realRandomPic() {
+                var randomNum = Math.floor(Math.random() * realPix.length);
+                document.getElementById("realButton").src = realPix[randomNum];
+            }
+        </script>
+    </head>
+    <body>
+        <br>
+        <br>
+        <br>
+        <div class="center">
+            <h1>AI or real? Take your pick!</h1>
+        </div>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        
+        <div class="imageContainer">
+            <button><img id = "aiButton"></button>
+            <button><img id = "realButton"></button>>
+            <!--sample code for buttons below-->
+        </div>"
+        <!--Images that the player selects from are buttons, regenerating a new random image from a folder of images each time either button is clicked-->
+        <!--For now, every AI will be left, every real will be right. to make it easier lol-->
+    </body>
+
+    <!-- button code:
+        {% for img in imgrand %}
+        <img src="static/{{img}}" alt="{{imgL}}" style="width:100%">
+        {% endfor %}
+    -->
+</html>
