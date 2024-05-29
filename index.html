@@ -10,9 +10,12 @@
         <script>
             window.onload = randomPics;
 
+            //creates two arrays with ai imgs and real imgs, its a bit annoying but it works so whatever
             var aiPics = new Array("static/aiimg/1.jpg", "static/aiimg/2.webp", "static/aiimg/3.webp", "static/aiimg/4.jpg", "static/aiimg/5.jpg","static/aiimg/6.jpg","static/aiimg/7.webp",);
             var realPics = new Array("static/realimg/1.webp","static/realimg/3.jpg","static/realimg/4.jpg","static/realimg/5.jpg","static/realimg/6.jpg","static/realimg/7.webp",);
 
+            //func that chooses a random from ai, and a random from real. 
+            //ill probably try and make it so that the two imgs randomly swap places, so its not always just left = ai right = real
             function randomPics() {
                 var randomNum = Math.floor(Math.random() * aiPics.length);
                 document.getElementById("aiButton").src = aiPics[randomNum];
@@ -40,7 +43,6 @@
             <button onclick = randomPics()><img id = "realButton" style="width:auto;height:50vh;object-fit:cover;"></button>
         </div>
         <!--Images that the player selects from are buttons, regenerating a new random image from a folder of images each time either button is clicked-->
-        <!--For now, every AI will be left, every real will be right. to make it easier lol-->
     </body>
 
 </html>
