@@ -10,13 +10,13 @@
         <script>
             window.onload = randomPics;
 
-            var aiPics = new Array("static/aiimg/1.jpg", "static/aiimg/2.webp", "static/aiimg/3.webp", "static/aiimg/4.jpg", "static/aiimg/5.jpg","static/aiimg/6.jpg","static/aiimg/7.webp","static/aiimg/8.jpg");
-            var realPics = new Array("static/realimg/1.webp","static/realimg/2/jpg","static/realimg/3.jpg","static/realimg/4.jpg","static/realimg/5.jpg","static/realimg/6.jpg","static/realimg/7.webp","static/realimg/8.jpg");
+            var aiPics = new Array("static/aiimg/1.jpg", "static/aiimg/2.webp", "static/aiimg/3.webp", "static/aiimg/4.jpg", "static/aiimg/5.jpg","static/aiimg/6.jpg","static/aiimg/7.webp",);
+            var realPics = new Array("static/realimg/1.webp","static/realimg/3.jpg","static/realimg/4.jpg","static/realimg/5.jpg","static/realimg/6.jpg","static/realimg/7.webp",);
 
             function randomPics() {
                 var randomNum = Math.floor(Math.random() * aiPics.length);
-                var randomNum = Math.floor(Math.random() * realPics.length);
                 document.getElementById("aiButton").src = aiPics[randomNum];
+                var randomNum = Math.floor(Math.random() * realPics.length);
                 document.getElementById("realButton").src = realPics[randomNum];
             }
 
