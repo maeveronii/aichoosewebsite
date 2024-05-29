@@ -8,21 +8,18 @@
 
         </style>
         <script>
-            window.onload = aiRandomPic;
-            window.onload = realRandomPic;
+            window.onload = randomPics;
 
             var aiPics = new Array("static/aiimg/1.jpg", "static/aiimg/2.webp", "static/aiimg/3.webp", "static/aiimg/4.jpg", "static/aiimg/5.jpg","static/aiimg/6.jpg","static/aiimg/7.webp","static/aiimg/8.jpg");
             var realPics = new Array("static/realimg/1.webp","static/realimg/2/jpg","static/realimg/3.jpg","static/realimg/4.jpg","static/realimg/5.jpg","static/realimg/6.jpg","static/realimg/7.webp","static/realimg/8.jpg");
 
-            function aiRandomPic() {
+            function randomPics() {
                 var randomNum = Math.floor(Math.random() * aiPics.length);
-                document.getElementById("aiButton").src = aiPics[randomNum];
-            }
-
-            function realRandomPic() {
                 var randomNum = Math.floor(Math.random() * realPics.length);
+                document.getElementById("aiButton").src = aiPics[randomNum];
                 document.getElementById("realButton").src = realPics[randomNum];
             }
+
         </script>
     </head>
     <body>
@@ -39,7 +36,7 @@
         <br>
         
         <div class="imageContainer">
-            <button><img onclick = aiRandomPic() id = "aiButton"></button>
+            <button><img onclick = aiRandomPic(),  id = "aiButton"></button>
             <button><img onclick = realRandomPic() id = "realButton"></button>
         </div>
         <!--Images that the player selects from are buttons, regenerating a new random image from a folder of images each time either button is clicked-->
