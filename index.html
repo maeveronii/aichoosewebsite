@@ -1,49 +1,216 @@
 <!DOCTYPE html>
 <html>
-    <head>
-        <style>
-            .imageContainer {
-                display: flex;
+
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        /*I LOVE CSS I LOVE SHIT JUST RANDOMLY BREAKING EVERYTHING FOR NO REASON*/
+        body, html {
+            min-height: 100%;
+        }
+
+        body {
+            text-align: center;
+            color: white;
+            font-family: Arial, sans-serif;
+            background-image: url("https://img.freepik.com/premium-vector/dark-grey-metallic-cyber-circuit-technology-futuristic-background_33869-1336.jpg");
+            min-height: 100%;
+            background-attachment: fixed;
+            background-position: center;
+            background-repeat: no-repeat;
+            background-size: cover;
+        }
+
+        h1 {
+            -webkit-text-stroke-width: 1px;
+            -webkit-text-stroke-color: black;
+        }
+
+        #imageContainer {
+            display: none;
+            justify-content: center;
+            width: auto;
+            height: auto;
+            margin: 20px;
+        }
+
+        .image {
+            display: flex;
+            justify-content: center;
+            padding: 1em;
+            border: solid;
+            margin: 2px;
+            background: rgba(5, 249, 245, 0.3);
+        }
+
+            .image img {
+                max-width: 100%;
+                max-height: 350px;
+                cursor: pointer;
             }
 
-        </style>
-        <script>
-            window.onload = randomPics;
+        .scorecss {
+            display: none;
+            max-width: 50%;
+            margin-left: auto;
+            margin-right: auto;
+            background: rgba(247, 37, 134, 0.3);
+            border: solid;
+            padding: 5px;
+            width: 25%;
+        }
 
-            //creates two arrays with ai imgs and real imgs, its a bit annoying but it works so whatever
-            //sometimes images just... dont work? (havent included them in the array) like its not just one format, sometimes the images just FULLY dont work at all, maybe theyre actually .jpeg and not .jpg and i fucked it up but watever :P
-            var aiPics = new Array("static/aiimg/1.jpg", "static/aiimg/2.webp", "static/aiimg/3.webp", "static/aiimg/4.jpg", "static/aiimg/5.jpg","static/aiimg/6.jpg","static/aiimg/7.webp","static/aiimg/9.jpg","static/aiimg/10.jpg","static/aiimg/11.webp","static/aiimg/12.webp","static/aiimg/13.webp","static/aiimg/14.jpg");
-            var realPics = new Array("static/realimg/1.webp","static/realimg/3.jpg","static/realimg/4.jpg","static/realimg/5.jpg","static/realimg/6.jpg","static/realimg/7.webp","static/realimg/9.webp","static/realimg/10.webp","static/realimg/11.jpg");
+        #result {
+            margin: 20px;
+        }
 
-            //func that chooses a random from ai, and a random from real. 
-            //ill probably try and make it so that the two imgs randomly swap places, so its not always just left = ai right = real
-            function randomPics() {
-                var randomNum = Math.floor(Math.random() * aiPics.length);
-                document.getElementById("aiButton").src = aiPics[randomNum];
-                var randomNum = Math.floor(Math.random() * realPics.length);
-                document.getElementById("realButton").src = realPics[randomNum];
+        #score {
+            margin: 20px;
+        }
+
+        #top-score {
+            margin: 20px;
+        }
+
+        #play {
+            padding: 10px 20px;
+            cursor: pointer;
+            color: black;
+            border-radius: 5px;
+        }
+    </style>
+
+</head>
+
+<body>
+
+    <div class="center">
+        <h1>AI or real? Take your pick!</h1>
+    </div>
+    <h4>Click the image that you think is real!</h4>
+    <button id="play">Play</button>
+    <br>
+    <div id="imageContainer">
+        <div id="image1" class="image"></div>
+        <div id="image2" class="image"></div>
+    </div>
+    <br>
+    <div class="scorecss">
+        <div id="result"></div>
+        <div id="score">Score: 0</div>
+        <div id="top-score">Top Score: 0</div>
+    </div>
+    <!--Images that the player selects from are buttons, regenerating a new random image from a folder of images each time either button is clicked  - maeve -->
+    <script>
+        //youll see i use const alot instead of let or var etc, for some reason my old teacher used to go overboard on security so its more just ingrained into my brain to add secure elements to shit that doesnt need it - marsh
+        //creates two arrays with ai imgs and real imgs, its a bit annoying but it works so whatever - maeve
+        //const instead of variable cause we dont want anything in the array to change yknow - marsh
+        // yes i know doing each array value on a new line takes up space stfu it makes it easier to read :( - marsh
+        const realImages = [
+            'static/realimg/1.webp',
+            'static/realimg/2.jpg',
+            'static/realimg/3.jpg',
+            'static/realimg/4.jpg',
+            'static/realimg/5.jpg',
+            'static/realimg/6.jpg',
+            'static/realimg/7.webp',
+            'static/realimg/8.jpeg',
+            'static/realimg/9.webp',
+            'static/realimg/10.webp',
+            'static/realimg/11.jpg',
+            'static/realimg/12.jpg',
+            'static/realimg/13.jpg',
+            'static/realimg/14.jpg',
+            'static/realimg/15.jpg',
+            'static/realimg/16.jpg',
+            'static/realimg/17.jpg',
+            'static/realimg/18.jpg',
+            'static/realimg/19.jpg',
+            'static/realimg/20.jpg',
+        ];
+
+        const aiImages = [
+            'static/aiimg/1.jpg',
+            'static/aiimg/2.webp',
+            'static/aiimg/3.webp',
+            'static/aiimg/4.jpg',
+            'static/aiimg/5.jpg',
+            'static/aiimg/6.jpg',
+            'static/aiimg/7.webp',
+            'static/aiimg/8.png',
+            'static/aiimg/9.jpg',
+            'static/aiimg/10.jpg',
+            'static/aiimg/11.webp',
+            'static/aiimg/12.webp',
+            'static/aiimg/13.webp',
+            'static/aiimg/14.jpg',
+            'static/aiimg/15.jpg',
+            'static/aiimg/16.jpg',
+            'static/aiimg/17.webp',
+            'static/aiimg/18.webp',
+            'static/aiimg/19.webp',
+            'static/aiimg/20.webp',
+        ];
+
+        let score = 0;
+        let topScore = 0;
+        //get a random image
+        function getRandomImage(images) {
+            return images[Math.floor(Math.random() * images.length)];
+        }
+
+        function loadImages() {
+            const realImage = getRandomImage(realImages);
+            const aiImage = getRandomImage(aiImages);
+            //randomly choose which way the images are
+            const realPosition = Math.random() < 0.5 ? 0 : 1;
+
+            const imageContainers = [document.getElementById('image1'), document.getElementById('image2')];
+            //if its a real image tag it as true for 'data-real' - marsh
+            //also just position stuff in the container - marsh
+            imageContainers[realPosition].innerHTML = `<img src="${realImage}" alt="Real Image" data-real="true">`;
+            imageContainers[1 - realPosition].innerHTML = `<img src="${aiImage}" alt="Fake Image" data-real="false">`;
+        }
+
+        function checkImage(event) {
+            //checkif you actually clicked on an image
+            if (event.target.tagName === 'IMG') {
+                //check if the image you clicked has the real tag as true
+                const isReal = event.target.getAttribute('data-real') === 'true';
+                const result = document.getElementById('result');
+                if (isReal) {
+                    result.textContent = 'Correct!';
+                    //make number bigger
+                    score++;
+                } else {
+                    result.textContent = 'Wrong! That was an AI generated image!';
+                    //if its a highscore then set it as so
+                    if (score > topScore) {
+                        topScore = score;
+                    }
+
+                    document.getElementById('play').style.display = 'inline-block';
+                    document.getElementById('imageContainer').style.display = 'none';
+                    score = 0;
+                }
+                document.getElementById('score').textContent = `Score: ${score}`;
+                document.getElementById('top-score').textContent = `Top Score: ${topScore}`;
+                loadImages();
             }
+        }
+        //even though i defined a bunch of functions, they're basically nested so executing one function executes another etc - marsh
+        //yes i do know that this could all be in one function, but that would make it alot harder to edit when adding to it or bug fixing - marsh
+        //checks if you interact with the actual game and executes checkimage function when you do - marsh
+        document.getElementById('imageContainer').addEventListener('click', checkImage);
 
-        </script>
-    </head>
-    <body>
-        <br>
-        <br>
-        <br>
-        <div class="center">
-            <h1>AI or real? Take your pick!</h1>
-        </div>
-        <br>
-        <br>
-        <br>
-        <br>
-        <br>
-        
-        <div class="imageContainer">
-            <button onclick = randomPics()><img id = "aiButton" style="width:auto;height:50vh;object-fit:cover;"></button>
-            <button onclick = randomPics()><img id = "realButton" style="width:auto;height:50vh;object-fit:cover;"></button>
-        </div>
-        <!--Images that the player selects from are buttons, regenerating a new random image from a folder of images each time either button is clicked-->
-    </body>
+        document.getElementById('play').addEventListener('click', function () {
+            //clicking play makes game things apear and play button dissapear
+            document.getElementById('play').style.display = 'none';
+            document.getElementById('imageContainer').style.display = 'flex';
+            document.querySelector('.scorecss').style.display = 'block';
+            loadImages();
+        });
+    </script>
+</body>
 
 </html>
