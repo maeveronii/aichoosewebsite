@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html>
+<<<<<<< HEAD
 
 <head>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -60,6 +61,59 @@
             width: 25%;
         }
 
+=======
+
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        /*I LOVE CSS I LOVE SHIT JUST RANDOMLY BREAKING EVERYTHING FOR NO REASON*/
+        body {
+            text-align: center;
+            color: white;
+            font-family: Arial, sans-serif;
+            background-image: url("https://img.freepik.com/premium-vector/dark-grey-metallic-cyber-circuit-technology-futuristic-background_33869-1336.jpg");
+        }
+
+        h1{
+            -webkit-text-stroke-width: 1px;
+            -webkit-text-stroke-color: black;
+        }
+        
+
+        #imageContainer {
+            display: flex;
+            justify-content: center;
+            width:auto;
+            height: auto;
+            margin: 20px;
+            
+        }
+
+        .image {
+            display: flex;
+            justify-content: center;
+	        padding: 1em;
+	        border: solid;
+	        margin: 2px;
+            background: rgba(5, 249, 245, 0.3);
+        }
+        .image img {
+            max-width: 100%;
+            max-height: 450px;
+            cursor: pointer;
+        }
+
+        .scorecss{
+            max-width: 500px;
+            margin-left: auto;
+            margin-right: auto;
+            background: rgba(247, 37, 134, 0.3);
+            border: solid;
+            padding: 1em;
+            width:25%;
+        }
+
+>>>>>>> a2a549378c08834f3465a874ff755c3280870f90
         #result {
             margin: 20px;
         }
@@ -71,6 +125,7 @@
         #top-score {
             margin: 20px;
         }
+<<<<<<< HEAD
 
         #play {
             padding: 10px 20px;
@@ -90,19 +145,44 @@
     <h4>Click the image that you think is real!</h4>
     <button id="play">Play</button>
     <br>
+=======
+    </style>
+
+</head>
+<body>
+    <br>
+    <div class="center">
+        <h1>AI or real? Take your pick!</h1>
+    </div>
+    <br>
+    <h2>Click the image that you think is real!</h2>
+>>>>>>> a2a549378c08834f3465a874ff755c3280870f90
     <div id="imageContainer">
         <div id="image1" class="image"></div>
         <div id="image2" class="image"></div>
     </div>
+<<<<<<< HEAD
     <br>
+=======
+>>>>>>> a2a549378c08834f3465a874ff755c3280870f90
     <div class="scorecss">
         <div id="result"></div>
         <div id="score">Score: 0</div>
         <div id="top-score">Top Score: 0</div>
+<<<<<<< HEAD
     </div>
     <!--Images that the player selects from are buttons, regenerating a new random image from a folder of images each time either button is clicked  - maeve -->
     <script>
         //youll see i use const alot instead of let or var etc, for some reason my old teacher used to go overboard on security so its more just ingrained into my brain to add secure elements to shit that doesnt need it - marsh
+=======
+    </div>  
+    <!--Images that the player selects from are buttons, regenerating a new random image from a folder of images each time either button is clicked  - maeve -->
+
+    <script>
+        //youll see i use const alot instead of let or var etc, for some reason my old teacher used to go overboard on security so its more just ingrained into my brain to add secure elements to shit that doesnt need it - marsh
+        window.onload = loadImages;
+
+>>>>>>> a2a549378c08834f3465a874ff755c3280870f90
         //creates two arrays with ai imgs and real imgs, its a bit annoying but it works so whatever - maeve
         //const instead of variable cause we dont want anything in the array to change yknow - marsh
         // yes i know doing each array value on a new line takes up space stfu it makes it easier to read :( - marsh
@@ -127,6 +207,10 @@
             'static/realimg/18.jpg',
             'static/realimg/19.jpg',
             'static/realimg/20.jpg',
+<<<<<<< HEAD
+=======
+
+>>>>>>> a2a549378c08834f3465a874ff755c3280870f90
         ];
 
         const aiImages = [
@@ -150,10 +234,19 @@
             'static/aiimg/18.webp',
             'static/aiimg/19.webp',
             'static/aiimg/20.webp',
+<<<<<<< HEAD
         ];
 
         let score = 0;
         let topScore = 0;
+=======
+
+
+        ];
+        let score = 0;
+        let topScore = 0;
+
+>>>>>>> a2a549378c08834f3465a874ff755c3280870f90
         //get a random image
         function getRandomImage(images) {
             return images[Math.floor(Math.random() * images.length)];
@@ -188,11 +281,17 @@
                     if (score > topScore) {
                         topScore = score;
                     }
+<<<<<<< HEAD
 
                     document.getElementById('play').style.display = 'inline-block';
                     document.getElementById('imageContainer').style.display = 'none';
                     score = 0;
                 }
+=======
+                    score = 0;
+                }
+                //change score and top score to actual correct numbers
+>>>>>>> a2a549378c08834f3465a874ff755c3280870f90
                 document.getElementById('score').textContent = `Score: ${score}`;
                 document.getElementById('top-score').textContent = `Top Score: ${topScore}`;
                 loadImages();
@@ -202,6 +301,7 @@
         //yes i do know that this could all be in one function, but that would make it alot harder to edit when adding to it or bug fixing - marsh
         //checks if you interact with the actual game and executes checkimage function when you do - marsh
         document.getElementById('imageContainer').addEventListener('click', checkImage);
+<<<<<<< HEAD
 
         document.getElementById('play').addEventListener('click', function () {
             //clicking play makes game things apear and play button dissapear
@@ -210,6 +310,9 @@
             document.querySelector('.scorecss').style.display = 'block';
             loadImages();
         });
+=======
+        //load images when you load the page, could also do a click to play button but meh - marsh
+>>>>>>> a2a549378c08834f3465a874ff755c3280870f90
     </script>
 </body>
 
